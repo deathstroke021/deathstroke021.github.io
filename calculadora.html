@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jison / Jison - calculator</title>
+
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.8.0">
+  </head>
+  <body>
+    
+    <div id="content">
+      
+
+      <h1>Calculator </h1>
+      <p>Enter an expression to evaluate</p>
+      <p>
+        <input type="text" value="" id="value_to_calculate" /> <button id="do_calculate">equals</button> <span id="calculated_value"></span>
+      </p>
+
+    <script src="jquery.js"></script>
+    <script src="sintactico.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#do_calculate").click(function () {
+          try {
+            var result = sintactico.parse($("#value_to_calculate").val());
+            $("#calculated_value").html(result);
+          } catch (e) {
+            $("#calculated_value").html(String(e));
+          }
+        });
+      });
+    </script>
+
+    </div>
+    
+  </body>
+</html>
